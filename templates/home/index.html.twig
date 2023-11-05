@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <div class="custom-form-bg">
+        <h2 class="mb-4">Current Generation - Regional</h2>
+
+        <div class="mb-4">
+            <p class="text-muted font-italic">Filter by Region and Generation:</p>
+        </div>
+
+        <form method="post" action="{{ path('app_post') }}">
+            <div class="form-group">
+                <label for="region">Select Region:</label>
+                <select name="region" id="region" class="form-control">
+                    {% for option in regionOptions %}
+                        <option value="{{ option }}" {% if option == app.request.get('region') %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="generation_type">Select Generation Type:</label>
+                <select name="generation_type" id="generation_type" class="form-control">
+                    {% for option in generationOptions %}
+                        <option value="{{ option }}" {% if option == app.request.get('generation_type') %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Get Data</button>
+                </div>
+            </div>
+
+        </form>
+
+        {% if region is defined and generation_type is defined and intensity_data is defined %}
+        <p>Region: {{ region }}</p>
+        <p>Generation Type: {{ generation_type }}</p>
+        <p>Intensity Data: {{ intensity_data }}</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="custom-form-bg">
+        <h2 class="mb-4">Carbon Intensity (gCO2/kWh)</h2>
+        <div class="mb-4">
+            <p class="text-muted font-italic">Click the button to view forecast, actual and index information</p>
+        </div>
+        <div class="col-12"><a href="{{ path('app_get') }}">View Details</a></div>
+    </div>
+</div>
+
+{% endblock %}

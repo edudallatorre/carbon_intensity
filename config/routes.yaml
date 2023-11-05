@@ -1,0 +1,13 @@
+home:
+    path: /
+    controller: 'App\Controller\MainController::index'
+
+app_get:
+    path: /intensity
+    controller: 'App\Controller\GetController::getIntensity'
+
+app_post:
+    path: /post
+    controller: 'App\Controller\PostController::filterRegional'
+
+
