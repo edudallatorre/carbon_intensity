@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Intensity{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="custom-form-bg">
+            <h2>Carbon Intensity (gCO2/kWh)</h2>
+            {% if data %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Forecast</th>
+                            <th>Actual</th>
+                            <th>Index</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for entry in data.data %}
+                            <tr>
+                                <td>{{ entry.from|date('Y-m-d H:i:s') }}</td>
+                                <td>{{ entry.to|date('Y-m-d H:i:s') }}</td>
+                                <td>{{ entry.intensity.forecast }}</td>
+                                <td>{{ entry.intensity.actual }}</td>
+                                <td>{{ entry.intensity.index }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No data available.</p>
+            {% endif %}
+            <br>
+            <a href="{{ path('home') }}" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+{% endblock %}
