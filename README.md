@@ -4,7 +4,7 @@ This project aims to consume a carbon intensity API using the Symfony framework.
 
 For detailed API definitions and usage, please refer to the official documentation [here](https://carbon-intensity.github.io/api-definitions/).
 
-![Texto alternativo](public/img/carbon_intensity.gif)
+![Carbon Intensity](public/img/carbon_intensity.gif)
 
 ## Installation
 
